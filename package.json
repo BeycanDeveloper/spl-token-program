@@ -1,0 +1,45 @@
+{
+  "name": "spl-token-program",
+  "version": "1.0.0",
+  "description": "A customized SPL Token program for generating SPL Tokens on the Solana network.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeycanDeveloper/spl-token-program"
+  },
+  "keywords": [],
+  "author": "Halil Beycan",
+  "license": "MIT",
+  "scripts": {
+    "build:program": "cargo build-bpf --manifest-path=./src/program/Cargo.toml --bpf-out-dir=dist/program",
+    "clean:program": "rmdir /s /q dist/program",
+    "test:program": "cd src/program && cargo test-bpf",
+    "build:client": "babel src/client -d dist/client",
+    "clean:client": "rmdir /s /q dist/client && rmdir /s /q store",
+    "deploy": "npm run build:client && node dist/client/deploy.js",
+    "deploy:clean": "npm run build:program && npm run clean:client && npm run deploy",
+    "init-pool": "npm run build:client && node dist/client/initPool.js",
+    "clean": "npm run clean:program && npm run clean:client && rmdir /s /q dist",
+    "clippy": "cd src/program && cargo clippy",
+    "fmt": "cd src/program && cargo fmt"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1"
+  },
+  "dependencies": {
+    "@solana/spl-token": "0.0.13",
+    "@solana/web3.js": "^0.86.2",
+    "bip32": "^2.0.6",
+    "bip39": "^3.0.3",
+    "buffer-layout": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "mkdirp-promise": "^5.0.1",
+    "mz": "^2.7.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "engines": {
+    "node": "11.x"
+  }
+}
