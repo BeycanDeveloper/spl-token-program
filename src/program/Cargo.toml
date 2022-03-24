@@ -9,7 +9,7 @@ authors = ["Halil"]
 repository = "https://github.com/BeycanDeveloper/spl-token-program"
 license = "MIT"
 homepage = "https://github.com/BeycanDeveloper/spl-token-program"
-edition = "2022"
+edition = "2018"
 
 [features]
 no-entrypoint = []
